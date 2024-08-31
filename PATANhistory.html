@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patan District</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #2e3b4e; /* Comfortable background color */
+            color: #f0f0f0; /* Light text color for readability */
+            overflow: hidden;
+            position: relative;
+        }
+        
+        h1 {
+            color: #ffb74d; /* Warm orange color for heading */
+            margin: 20px 0;
+        }
+
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .light {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 20%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(50px);
+            animation: move 20s linear infinite;
+        }
+
+        .light:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            background-color: #ff6f61; /* Soft coral color */
+        }
+
+        .light:nth-child(2) {
+            top: 40%;
+            left: 30%;
+            background-color: #4db6ac; /* Soft teal color */
+        }
+
+        .light:nth-child(3) {
+            top: 70%;
+            left: 60%;
+            background-color: #81c784; /* Soft green color */
+        }
+
+        .light:nth-child(4) {
+            top: 20%;
+            left: 80%;
+            background-color: #fdd835; /* Warm yellow color */
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .scrolling-text {
+            position: absolute;
+            width: 100%;
+            top: 60px; /* Positioned below the heading */
+            font-size: 1.2em;
+            color: #ffeb3b; /* Bright yellow for contrast */
+            white-space: nowrap;
+            animation: scroll-text 30s linear infinite; /* Slower speed */
+            z-index: 2;
+        }
+
+        @keyframes scroll-text {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        video {
+            width: 80%;
+            max-width: 800px;
+            height: auto;
+            margin: 20px auto;
+            border: 2px solid #333;
+            border-radius: 8px;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .controls {
+            margin-top: 10px;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .controls button {
+            font-size: 16px;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #964caf; /* Green button color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .controls button:hover {
+            background-color: #38558e; /* Darker green on hover */
+        }
+        
+        .vr-button {
+            background-color: #2196f3; /* Blue button color */
+        }
+
+        .vr-button:hover {
+            background-color: #1976d2; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Patan District</h1>
+    
+   
+    
+    <!-- Background Animation -->
+    <div class="background">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+    </div>
+
+    <video id="Patan-video" controls>
+        <source src="PATANhistroy.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <div class="controls">
+        <button onclick="playPause()">Play/Pause</button>
+        <button onclick="toggleFullscreen()">Fullscreen</button>
+        <button onclick="toggleMute()">Mute/Unmute</button>
+        <button class="vr-button">Enter VR Mode</button>
+    </div>
+
+    <script>
+        const video = document.getElementById('Patan-video');
+
+        function playPause() {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+
+        function toggleFullscreen() {
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.webkitRequestFullscreen) { /* Safari */
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) { /* IE11 */
+                video.msRequestFullscreen();
+            }
+        }
+
+        function toggleMute() {
+            video.muted = !video.muted;
+        }
+    </script>
+</body>
+</html>
